@@ -29,6 +29,7 @@ class DDPGagent(nn.Module):
     def get_action(self, state):
         with torch.no_grad():
             action = self.actor(state)[0]
+            action = action.cpu()
             action = action.numpy()
         return action
 
